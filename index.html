@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>聪明的CCY Snapshot</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero panel">
+        <div>
+          <p class="eyebrow">GitHub Pages Snapshot</p>
+          <h1>聪明的CCY</h1>
+          <p class="subtitle">最近一次发布时的静态快照。访问时不连接本地数据库，但保留主要筛选与图表交互。</p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-block"><span>最近发布</span><strong id="generatedAt">-</strong></div>
+          <div class="meta-block"><span>数据范围</span><strong id="dateBounds">-</strong></div>
+        </div>
+      </section>
+
+      <section class="panel filters">
+        <label><span>资产范围</span><select id="presetSelect"></select></label>
+        <label><span>选择标的</span><select id="assetSelect"></select></label>
+        <label><span>开始日期</span><input id="startDate" type="date"></label>
+        <label><span>结束日期</span><input id="endDate" type="date"></label>
+        <label class="toggle"><input id="maskToggle" type="checkbox" checked><span>金额打码</span></label>
+      </section>
+
+      <section class="kpis">
+        <article class="panel"><span>当前总资产（CNY）</span><strong id="kpiTotalAssets">-</strong></article>
+        <article class="panel"><span>TWR收益率</span><strong id="kpiTwr">-</strong></article>
+        <article class="panel"><span>组合收益率</span><strong id="kpiTotalReturn">-</strong></article>
+        <article class="panel"><span>起止日期</span><strong id="kpiRange">-</strong></article>
+        <article class="panel"><span>IRR隐含累计收益</span><strong id="kpiIrr">-</strong></article>
+        <article class="panel"><span>累计盈亏（CNY）</span><strong id="kpiCumPnl">-</strong></article>
+        <article class="panel"><span>最大回撤</span><strong id="kpiMaxDd">-</strong></article>
+        <article class="panel"><span>张波当前应结金额（CNY）</span><strong id="kpiZhangbo">-</strong></article>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="chart-title">资产趋势（金额）</div>
+        <div id="assetsChart" class="chart"></div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="chart-title">组合净值（NAV）</div>
+        <div id="navChart" class="chart"></div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="chart-head">
+          <div class="chart-title">收益率趋势</div>
+          <div class="tabs">
+            <button class="tab active" data-view="cum">累计收益率</button>
+            <button class="tab" data-view="daily">每日收益率</button>
+          </div>
+        </div>
+        <div id="returnsChart" class="chart"></div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="chart-title">张波分成权益曲线</div>
+        <div id="zhangboChart" class="chart"></div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="chart-title">资产贡献度（区间总盈亏）</div>
+        <div id="contribChart" class="chart"></div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
